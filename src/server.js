@@ -8,9 +8,10 @@ import connectDB from "./config/connectDB";
 import cors from "cors";
 
 app.use(cors({ credentials: true, origin: true }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb' , extended: true}));
 // Add headers before the routes are defined
 // app.use(function (req, res, next) {
 //   // Website you wish to allow to connect

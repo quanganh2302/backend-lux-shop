@@ -33,7 +33,8 @@ let createNewProduct = (data) => {
           productId: data.productId,
           nameProductEn: data.productNameEn,
           nameProductVi: data.productNameVi,
-          desc: data.desc,
+          desc: data.description,
+          materials: data.materials,
           image: data.image,
           tagName: data.tagName,
           catagoriesId: data.category,
@@ -43,7 +44,6 @@ let createNewProduct = (data) => {
           weigh: data.weigh,
         });
         let productId = await res.dataValues.id;
-        console.log(productId);
         createColorProduct(data, productId);
         resolve({
           errCode: 0,
@@ -79,6 +79,9 @@ let fetchProduct = () => {
   return new Promise(async (resolve, reject) => {
     try {
       let res = await db.Product.findAll({
+        attributes: {
+          exclude: ["image"],
+        },
         include: [
           {
             model: db.Color,

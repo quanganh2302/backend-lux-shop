@@ -21,6 +21,9 @@ module.exports = {
       desc: {
         type: Sequelize.STRING,
       },
+      materials: {
+        type: Sequelize.STRING,
+      },
       image: {
         type: Sequelize.STRING,
       },
